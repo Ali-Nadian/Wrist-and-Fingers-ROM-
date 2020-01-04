@@ -1,0 +1,21 @@
+
+
+
+tic;
+clc;
+close all;
+clear all;
+
+% address = ('TrainData\');
+address = ('TestData\');
+files = dir([address '*.csv']);
+nfiles = length(files);
+fnames = {files.name};
+for i = 1:nfiles
+    data{i} = readtable([address fnames{i}], 'Delimiter', ',');
+    clc;
+    disp(['Reading data... ' num2str(floor((i / nfiles) * 100)) '%']);
+end
+%% After loop, 'data' variable contains data set due to 'address'
+toc;
+
